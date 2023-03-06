@@ -15,21 +15,22 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { title, description } = req.body;
-    const task = new Task({ title, description })
+    console.log(req.body);
+    const { title, description, priority } = req.body;
+    const task = new Task({ title, priority, description })
     await task.save();
-    res.json({ status: 'Task Saved' });
+    res.json({ status: 200, message: 'Task Saved' });
 });
 
 router.put('/:id', async (req, res) => {
-    const newTask = { title, description } = req.body;
+    const newTask = { title, priority, description } = req.body;
     await Task.findByIdAndUpdate(req.params.id, newTask)
-    res.json({status: 'Task Updated'});
+    res.json({status: 200});
 });
 
 router.delete('/:id', async (req, res) => {
     await Task.findByIdAndRemove(req.params.id)
-    res.json({status: 'Task Deleted'});
+    res.json({status: 200});
 });
 
 module.exports = router;
