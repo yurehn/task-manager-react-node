@@ -30,7 +30,7 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     await Task.findByIdAndRemove(req.params.id)
-    res.json({status: 200});
+    res.json({ status: 200, message: 'Task Deleted' });
 });
 
 module.exports = router;
