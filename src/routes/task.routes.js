@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const newTask = { title, priority, description } = req.body;
     await Task.findByIdAndUpdate(req.params.id, newTask)
-    res.json({status: 200});
+    res.json({ status: 200, message: 'Task Updated' });
 });
 
 router.delete('/:id', async (req, res) => {
